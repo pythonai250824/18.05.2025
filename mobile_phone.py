@@ -40,107 +40,34 @@ class MobilePhone:
         #    MobilePhone('Samsung', 'S25Ultra', 'black', 25)
         return f"MobilePhone('{self.brand}', '{self.model}', '{self.color}', {self.battery})"
 
-    def __del__(self):
-        print(f"MobilePhone {self.model} {self.brand} is being removed!")
-
-def add(x: int, y: int) -> int:
-    x = x
-    return x + y
-
-# בנאי
-# constructor
-# init
 samsung = MobilePhone('Samsung', 'S25Ultra', 'black', 25)
 iphone = MobilePhone('IPhone', '16pro', 'white', 79)
 
 iphone.ring()
 
-class Person:
-    pass
-
 print("isinstance(samsung, MobilePhone) ?", isinstance(samsung, MobilePhone))
-print("isinstance(samsung, Person) ?", isinstance(samsung, Person))  # reflection
 
-def ring_me(m: MobilePhone):
-    if isinstance(MobilePhone, m):
-        print('I am a mobile phone')
+class Person:
+    def __init__(self, name: str, height: float, weight: float):
+        self.name = name
+        self.height = height
+        self.weight = weight
 
+    def print_name(self) -> None:
+        print(f"Person name is {self.name}")
 
+    def get_measurements(self) -> str:
+        return f"Person weight is {self.weight} and height is {self.height}"
 
+    @override
+    def __str__(self):
+        return f"Person {self.name} weight={self.weight} height(meter)={self.height} super={super().__str__()}"
 
+danny = Person('danny', 1.8, 89)
 
-#
-# # new1 = MobilePhone(samsung.brand, ...)
-#
-# # new2 = MobilePhone('Samsung', 'S25Ultra', 'black', 25)
-#
-# # db = DbConn(...)  # long
-# # repr_db = db.__repr__()
-# # db.connect
-#
-# # eval playground
-# # eval("print('hello, running via eval')")
-# #
-# # command = input('enter command:')
-# # while command != 'exit':
-# #     eval(command)
-# #     command = input('enter command:')
-#
-#
-#
-# bag: list[MobilePhone] = [samsung, iphone]
-# print(bag)  # __repr__ : 1. inside container 2. developer-code
-# print({'phone': samsung})
-# print(samsung.__repr__())
-#
-# print(samsung.__dict__)
-#
-# d = dict()
-# d['id'] = 1
-#
-# class Point:
-#     def __init__(self, x, y):
-#         self.x = x
-#         self.y = y
-#
-#     def __str__(self):
-#        return f"x = {self.x} y = {self.y} distance = {math.sqrt(self.x ** 2 + self.y ** 2)}"
-#
-# p1 = Point(5.7, 9.9)
-# p2 = Point(5.9, 10.9)
-#
-# p1.x = p1.x ** 2
-# # samsung.brand = "Samsung"
-# # samsung.model = "S25Ultra"
-# # samsung.color = "Black"
-# # samsung.battery = 25
-#
-# samsung.screen_protector = 'glass'
-# del samsung.screen_protector
-#
-# # create UML for class Person
-# # id: int
-# # name: str
-# # height: float
-# # salary: int
-# # init -- with all parameters
-# # write a class Person + create instance with some data
-#
-# print(samsung)  # __str__ ( )
-#
-# def a():
-#     n = MobilePhone('Samsung!!', 'S25Ultra', 'black', 25)
-#     time.sleep(1)
-#
-# a()
-# time.sleep(1)
-# print('bye')
-# # override
-# # <module.Class-name object at HashCode [0x000001D3D3723EE0]>
+print(danny.get_measurements())
+danny.print_name()
+
+print(danny)
 
 
-# Person
-# __init__ -- name, height, weight
-# create func print_details(self) -> print the person name
-# create func print_measurements(self) -> print the person height and weight
-# create a new person and execute both functions
